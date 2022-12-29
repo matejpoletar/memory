@@ -1,0 +1,77 @@
+.tile-container {
+	width: 115px;
+	height: 160px;
+	perspective: 1000px;
+}
+
+.tile {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	border-radius: 5px;
+	border: 5px solid white;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+	user-select: none;
+	cursor: pointer;
+	transform-style: preserve-3d;
+}
+
+.tile-front,
+.tile-back {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.tile-front {
+	background-color: #73d0ff;
+	transform: rotateY(180deg);
+	font-size: 40px;
+}
+
+.tile-back {
+	background-color: #bababa;
+}
+
+/* CSSTransition classNames */
+
+.flip-enter {
+	transform: rotateY(0deg);
+}
+
+.flip-enter-active {
+	transform: rotateY(180deg);
+	transition: transform 300ms;
+	transition-timing-function: cubic-bezier(0.55, 0.085, 0.68, 1.25);
+}
+
+.flip-enter-done {
+	transform: rotateY(180deg);
+}
+
+.flip-exit {
+	transform: rotateY(180deg);
+}
+
+.flip-exit-active {
+	transform: rotateY(0deg);
+	transition: transform 300ms;
+	transition-timing-function: cubic-bezier(0.55, 0.085, 0.68, 1.25);
+}
+
+.flip-exit-done {
+	transform: rotateY(0deg);
+}
+
+.hidden {
+	opacity: 0;
+	transform: scale(1.1);
+	transition: all 0.6s ease-out;
+	cursor: auto;
+}
